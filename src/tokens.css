@@ -1,0 +1,219 @@
+@theme {
+  /* ---- Primary : Brand -------------------------------------------------- */
+  --color-brand: #4f46e5;         /* indigo-600 */
+  --color-brand-hover: #4338ca;   /* indigo-700 */
+  --color-brand-active: #3730a3;  /* indigo-800 */
+  --color-brand-subtle: #eef2ff;  /* indigo-50  */
+
+  /* ---- Secondary : Accent ------------------------------------------------ */
+  --color-accent: #f59e0b;        /* amber-500 */
+  --color-accent-hover: #d97706;  /* amber-600 */
+  --color-accent-active: #b45309; /* amber-700 */
+  --color-accent-subtle: #fffbeb; /* amber-50  */
+
+  /* ---- Surface / Background (neutral) ------------------------------------ */
+  --color-canvas: #f8fafc;   /* page background   — slate-50  */
+  --color-surface: #ffffff;  /* card / input bg    — white    */
+  --color-border: #e2e8f0;   /* hairlines          — slate-200*/
+  --color-ink: #0f172a;      /* primary text/headings — slate-900 */
+  --color-ink-soft: #334155; /* secondary headings — slate-700*/
+  --color-muted: #64748b;    /* body/secondary text — slate-500*/
+  --color-muted-2: #94a3b8;  /* placeholders/icons — slate-400*/
+
+  /* ---- Functional (state only, not part of the 3-color brand palette) --- */
+  --color-danger: #c81e1e;         /* red-700-ish, tuned for AA on danger-subtle */
+  --color-danger-subtle: #fef2f2;  /* red-50  */
+}
+
+/* ==========================================================================
+   Shared component classes — every screen should build on these instead of
+   ad hoc Tailwind color utilities, so the whole app stays on the palette.
+   ========================================================================== */
+@layer components {
+  .page-shell {
+    background-color: var(--color-canvas);
+  }
+
+  .card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 1.25rem;
+  }
+
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background-color: var(--color-brand-subtle);
+    color: var(--color-brand-active);
+  }
+
+  /* Buttons ---------------------------------------------------------------- */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: var(--color-brand);
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.65rem 1.25rem;
+    border-radius: 0.75rem;
+    transition: background-color 150ms ease, transform 150ms ease;
+  }
+  .btn-primary:hover { background-color: var(--color-brand-hover); }
+  .btn-primary:active { background-color: var(--color-brand-active); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: var(--color-surface);
+    color: var(--color-brand);
+    font-weight: 600;
+    padding: 0.65rem 1.25rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-border);
+    transition: background-color 150ms ease, border-color 150ms ease;
+  }
+  .btn-secondary:hover { background-color: var(--color-brand-subtle); border-color: var(--color-brand); }
+  .btn-secondary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-accent {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: var(--color-accent);
+    color: var(--color-ink);
+    font-weight: 600;
+    padding: 0.65rem 1.25rem;
+    border-radius: 0.75rem;
+    transition: background-color 150ms ease;
+  }
+  .btn-accent:hover { background-color: var(--color-accent-hover); }
+  .btn-accent:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  .btn-icon-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    color: var(--color-muted);
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+
+  /* Form fields -------------------------------------------------------------*/
+  .input-field {
+    width: 100%;
+    border: 1px solid var(--color-border);
+    background-color: var(--color-surface);
+    color: var(--color-ink);
+    border-radius: 0.75rem;
+    padding: 0.65rem 0.9rem;
+    outline: none;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+  }
+  .input-field::placeholder { color: var(--color-muted-2); }
+  .input-field:focus { border-color: var(--color-brand); box-shadow: 0 0 0 3px var(--color-brand-subtle); }
+  .input-field-error { border-color: var(--color-danger); }
+  .input-field-error:focus { box-shadow: 0 0 0 3px var(--color-danger-subtle); }
+
+  .field-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-ink-soft);
+  }
+
+  .field-error-text {
+    margin-top: 0.375rem;
+    font-size: 0.875rem;
+    color: var(--color-danger);
+  }
+
+  /* Destructive action button — same shape as btn-primary, danger colored */
+  .btn-danger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background-color: var(--color-danger);
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.65rem 1.25rem;
+    border-radius: 0.75rem;
+    transition: background-color 150ms ease, transform 150ms ease;
+  }
+  .btn-danger:hover { background-color: #a51818; }
+  .btn-danger:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* Small circular icon button — navbar "add" action, avatar-sized touch targets */
+  .icon-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    background-color: var(--color-brand);
+    color: #ffffff;
+    transition: background-color 150ms ease, transform 150ms ease;
+  }
+  .icon-badge:hover { background-color: var(--color-brand-hover); transform: translateY(-1px); }
+  .icon-badge:active { background-color: var(--color-brand-active); transform: translateY(0); }
+
+  /* Modal / drawer backdrop */
+  .overlay {
+    background-color: color-mix(in oklab, var(--color-ink) 45%, transparent);
+  }
+
+  /* Sidebar / nav link states, shared by desktop sidebar + any future nav */
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.625rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-muted);
+    transition: background-color 150ms ease, color 150ms ease;
+  }
+  .nav-link:hover { background-color: var(--color-canvas); color: var(--color-ink); }
+  .nav-link-active { background-color: var(--color-brand-subtle); color: var(--color-brand); }
+}
+
+/* ==========================================================================
+   Shared motion — referenced across pages via animate-* / animate-[...]
+   ========================================================================== */
+@theme {
+  --animate-fade-in: fade-in 220ms ease-out both;
+  --animate-dialog-drop-in: dialog-drop-in 350ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes dialog-drop-in {
+  from { opacity: 0; transform: translateY(-12px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* camelCase names kept for pages already using arbitrary animate-[fadeIn_...] / animate-[slideIn_...] */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
