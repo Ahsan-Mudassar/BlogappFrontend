@@ -70,9 +70,9 @@ const MyBlogs = () => {
 
     if (loadError) {
         return (
-            <div>
-                <p role="alert">{loadError}</p>
-                <button onClick={() => setReloadIndex((i) => i + 1)}>Retry</button>
+            <div className="flex flex-col items-center justify-center gap-4 py-24 text-center">
+                <p role="alert" className="text-danger text-sm font-medium">{loadError}</p>
+                <button onClick={() => setReloadIndex((i) => i + 1)} className="btn-primary text-sm px-4 py-2">Retry</button>
             </div>
         );
     }
@@ -89,7 +89,7 @@ const MyBlogs = () => {
                     {blogs?.map((blog) => (
                         <div key={blog._id} className="flex flex-col gap-2">
                             <BlogCard blog={blog} />
-                            <div className="flex items-center justify-end gap-1 rounded-xl border border-border bg-surface px-2 py-1.5 shadow-sm">
+                            <div className="flex items-center justify-between gap-1 rounded-xl border border-border bg-surface px-2 py-1.5 shadow-sm">
                                 <Link to={`/edit-blog/${blog._id}`} className="btn-icon-ghost text-muted! hover:bg-canvas! hover:text-brand!">
                                     <Pencil className="w-4 h-4" />
                                 </Link>

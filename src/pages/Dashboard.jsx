@@ -23,9 +23,9 @@ const Dashboard = () => {
       setError("");
       try {
         const { data } = await getMyBlogs({ limit: RECENT_COUNT, signal: controller.signal });
-        const recentBlogs = data?.blogs ?? [];
+        const recentBlogs = data?.data ;
         setBlogs(recentBlogs);
-        setTotalBlogs(data?.pagination?.total ?? data?.pagenation?.total ?? recentBlogs.length);
+        setTotalBlogs(data?.pagination?.total || data?.pagination?.total || recentBlogs.length);
       } catch (err) {
         if (err.name === "CanceledError" || err.code === "ERR_CANCELED" || controller.signal.aborted) return;
         setError(

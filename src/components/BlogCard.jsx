@@ -15,14 +15,14 @@ const BlogCard = ({ blog }) => {
               src={image.url}
               alt={title || "Blog cover"}
               loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+              className="h-full w-full object-cover "
             />
           </div>
         ) : (
           <div
             role="img"
             aria-label="No cover image available"
-            className="relative flex h-40 items-center justify-center bg-gradient-to-br from-brand via-brand-hover to-accent sm:h-48 md:h-52"
+            className="relative flex h-40 items-center justify-center bg-linear-to-br from-brand via-brand-hover to-accent sm:h-48 md:h-52"
           >
             <span className="text-4xl font-black text-white/80 sm:text-5xl">✦</span>
           </div>
